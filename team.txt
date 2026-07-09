@@ -1,0 +1,11 @@
+Members:
+- Jamie Cummings
+
+Trello Board:
+- https://trello.com/b/i01jJWzl/wdd330-team-16
+
+Git Repo:
+ - https://github.com/other-world/wdd330-team16
+
+Render site
+ - https://wdd330-team16-yry0.onrender.com
