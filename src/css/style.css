@@ -110,6 +110,10 @@ button {
   cursor: pointer;
 }
 
+button:active {
+  transform: scale(0.97);
+}
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
@@ -129,6 +133,18 @@ button {
 
 .cart:hover svg {
   fill: gray;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+
+}
+
+.cart svg.wiggle {
+  animation: wiggle 0.2s ease-in-out;
+  animation-iteration-count: 3; 
 }
 
 /* End cart icon styles */
