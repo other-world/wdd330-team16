@@ -27,6 +27,10 @@ export default class ProductDetails {
         }
         shoppingCart.push(product);
         setLocalStorage("so-cart", shoppingCart);
+
+        const cartIcon = document.querySelector(".cart svg");
+        cartIcon.classList.add("wiggle");
+        cartIcon.addEventListener("animationend", () => cartIcon.classList.remove("wiggle"), { once: true });
     }
 
     renderProductDetails(){
