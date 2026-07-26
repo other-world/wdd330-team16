@@ -25,7 +25,14 @@ export default class ProductDetails {
         if (shoppingCart === null) { 
             shoppingCart = [];
         }
-        shoppingCart.push(product);
+        const existingProduct = shoppingCart.find(productId => productId.Id === product.Id);
+        if (existingProduct === undefined){
+            product.qty = 1;
+            shoppingCart.push(product);
+        }
+        else{
+            existingProduct.qty ++;
+        }
         setLocalStorage("so-cart", shoppingCart);
 
         const cartIcon = document.querySelector(".cart svg");
