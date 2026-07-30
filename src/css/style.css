@@ -184,6 +184,30 @@ button:active {
   color: var(--dark-grey);
 }
 
+ .category-list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+.category-link a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-link a:hover {
+  color: #4b5651;
+}
+.category-img {
+  width: 50%;
+  height: 50%;
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
