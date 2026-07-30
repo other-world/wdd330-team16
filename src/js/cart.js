@@ -1,16 +1,24 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  try {
+    const cartItems = getLocalStorage("so-cart");
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    let productList = document.querySelector(".product-list");
+    productList.innerHTML = htmlItems.join("");
+  }
+  catch (e) {
+    // statements to handle any exceptions
+    //console.log(e); // pass exception object to error handler
+    document.querySelector(".products h2").innerHTML = "Your Shopping Cart Is Empty";
+  }
 }
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>
@@ -23,6 +31,10 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function calculateTotal(item){
+  return item.FinalPrice * item.qty;
 }
 
 renderCartContents();
