@@ -3,9 +3,23 @@ import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 function renderCartContents() {
   try {
     const cartItems = getLocalStorage("so-cart");
+    // Check cart and only render the total if there are elements in so-cart array. Otherwise, hide the total.
+    document.querySelector(".cart-footer").classList.toggle("hidden", cartItems.length === 0);
+
+    // Build the card for each element in so-cart
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-    let productList = document.querySelector(".product-list");
-    productList.innerHTML = htmlItems.join("");
+
+    // Work out the total
+    const totalArray = cartItems.map((item) => calculateTotal(item));
+    let total = 0;
+    totalArray.forEach(price => {
+      total += price;
+    });
+    //console.log(total);
+
+    // Put it all together
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    document.querySelector(".cart-total").innerHTML = `Total: $${total}`;
   }
   catch (e) {
     // statements to handle any exceptions
