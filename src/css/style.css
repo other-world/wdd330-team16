@@ -281,6 +281,10 @@ button:active {
   grid-column: 3;
 }
 
+.hidden { 
+  display: none; 
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
