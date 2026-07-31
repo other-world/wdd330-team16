@@ -1,4 +1,5 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import { itemsTotal } from "./OrderTotal.mjs";
 
 function renderCartContents() {
   try {
@@ -9,19 +10,13 @@ function renderCartContents() {
     // Build the card for each element in so-cart
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
 
-    // Work out the total
-    const totalArray = cartItems.map((item) => calculateTotal(item));
-    let total = 0;
-    totalArray.forEach(price => {
-      total += price;
-    });
-    //console.log(total);
+    const total = itemsTotal(cartItems);
 
     // Put it all together
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
-    document.querySelector(".cart-total").innerHTML = `Total: $${total}`;
+    document.querySelector(".cart-total").innerHTML = `Total: $${total.toFixed(2)}`;
   }
-  catch (e) {
+  catch (err) {
     // statements to handle any exceptions
     //console.log(e); // pass exception object to error handler
     document.querySelector(".products h2").innerHTML = "Your Shopping Cart Is Empty";
@@ -45,10 +40,6 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
-}
-
-function calculateTotal(item){
-  return item.FinalPrice * item.qty;
 }
 
 renderCartContents();

@@ -99,7 +99,7 @@ p {
   color: var(--tertiary-color);
 }
 
-button {
+button, .button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
   color: white;
@@ -110,7 +110,7 @@ button {
   cursor: pointer;
 }
 
-button:active {
+button:active, .button:active {
   transform: scale(0.97);
 }
 
@@ -245,10 +245,14 @@ button:active {
 
 /* Start cart list card styles */
 .cart-card {
+  width: 100%;
   display: grid;
   grid-template-columns: 25% auto 15%;
   font-size: var(--small-font);
   /* max-height: 120px; */
+  box-sizing: border-box;
+  padding-top: 2rem;
+  padding-inline: clamp(0.5rem, 4vw, 3rem);
   align-items: center;
 }
 
